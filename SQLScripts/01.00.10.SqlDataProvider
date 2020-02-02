@@ -1,0 +1,202 @@
+﻿
+IF NOT EXISTS (
+  SELECT * 
+  FROM   sys.columns 
+  WHERE  object_id = OBJECT_ID(N'[dbo].[GIBS_FlexMLS_ListingViews]') 
+         AND name = 'UpdatedDate' 
+)
+BEGIN
+ALTER TABLE GIBS_FlexMLS_ListingViews ADD UpdatedDate DATETIME;
+END
+GO
+
+IF NOT EXISTS (
+  SELECT * 
+  FROM   sys.columns 
+  WHERE  object_id = OBJECT_ID(N'[dbo].[GIBS_FlexMLS_ListingViews]') 
+         AND name = 'ListingViews' 
+)
+BEGIN
+ALTER TABLE GIBS_FlexMLS_ListingViews ADD ListingViews int;
+END
+GO
+
+
+/****** Object:  StoredProcedure [dbo].[GIBS_FlexMLS_ListingViews_Add]    Script Date: 12/28/2018 11:38:05 AM ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[GIBS_FlexMLS_ListingViews_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[GIBS_FlexMLS_ListingViews_Add]
+GO
+
+/****** Object:  StoredProcedure [dbo].[GIBS_FlexMLS_ListingViews_Add]    Script Date: 12/28/2018 11:38:05 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[GIBS_FlexMLS_ListingViews_Add]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'CREATE PROCEDURE [dbo].[GIBS_FlexMLS_ListingViews_Add] AS' 
+END
+GO
+
+
+ALTER procedure [dbo].[GIBS_FlexMLS_ListingViews_Add]
+
+	@ModuleId       int,
+	@Content        ntext,
+	@ListingNumber	int,
+	@ListingPrice	money,
+	@CreatedByUserID   int
+
+as
+
+
+
+
+BEGIN 
+	SET NOCOUNT ON;
+
+
+
+
+		if exists(select 1 from GIBS_FlexMLS_ListingViews where ListingNumber = @ListingNumber AND ModuleId = @ModuleId)
+			begin
+				--update  
+				UPDATE dbo.GIBS_FlexMLS_ListingViews
+				   SET 
+					  [ListingViews] = coalesce([ListingViews],1) + 1
+					  , UpdatedDate = getdate()
+					  , ListingPrice = @ListingPrice
+
+				 WHERE ListingNumber = @ListingNumber AND ModuleId = @ModuleId
+				
+			end
+		else
+			begin
+				--insert
+				
+insert into GIBS_FlexMLS_ListingViews (
+	ModuleId,
+	ListingNumber,
+	ListingPrice,
+	Content,
+	CreatedByUserID,
+	CreatedDate,
+	[ListingViews] ,
+	UpdatedDate
+) 
+values (
+	@ModuleId,
+	@ListingNumber,
+	@ListingPrice,
+	@Content,
+	@CreatedByUserID,
+	getdate(),
+	1, 
+	getdate()
+)
+				
+				
+			end	
+			
+			
+		return
+
+END
+
+GO
+
+
+
+/****** Object:  StoredProcedure [dbo].[GIBS_FlexMLS_ListingViews_Get]    Script Date: 12/28/2018 11:43:26 AM ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[GIBS_FlexMLS_ListingViews_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[GIBS_FlexMLS_ListingViews_Get]
+GO
+
+/****** Object:  StoredProcedure [dbo].[GIBS_FlexMLS_ListingViews_Get]    Script Date: 12/28/2018 11:43:26 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[GIBS_FlexMLS_ListingViews_Get]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'CREATE PROCEDURE [dbo].[GIBS_FlexMLS_ListingViews_Get] AS' 
+END
+GO
+
+
+ALTER procedure [dbo].[GIBS_FlexMLS_ListingViews_Get]
+
+	@NumberOfRecords int
+
+as
+
+
+
+select top (@NumberOfRecords)
+       Content,
+	   ListingNumber,
+	   ListingPrice,
+	   ListingViews, 
+       GIBS_FlexMLS_ListingViews.CreatedByUserID,
+       CreatedDate,
+	   UpdatedDate, 
+       'CreatedByUserName' = Users.FirstName + ' ' + Users.LastName
+from GIBS_FlexMLS_ListingViews
+left outer join Users on GIBS_FlexMLS_ListingViews.CreatedByUserID = Users.UserId
+--where  ModuleId = @ModuleId 
+
+order by UpdatedDate desc
+
+GO
+
+/****** Object:  StoredProcedure [dbo].[GIBS_FlexMLS_Favorites_Add]    Script Date: 12/29/2018 8:39:13 AM ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[GIBS_FlexMLS_Favorites_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[GIBS_FlexMLS_Favorites_Add]
+GO
+
+/****** Object:  StoredProcedure [dbo].[GIBS_FlexMLS_Favorites_Add]    Script Date: 12/29/2018 8:39:13 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[GIBS_FlexMLS_Favorites_Add]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'CREATE PROCEDURE [dbo].[GIBS_FlexMLS_Favorites_Add] AS' 
+END
+GO
+
+ALTER procedure [dbo].[GIBS_FlexMLS_Favorites_Add]
+
+	@ModuleId       int,
+	@Favorite        varchar(500),
+	@FavoriteType        varchar(10),
+	@UserID         int,
+	@EmailSearch	bit
+
+as
+
+BEGIN
+   IF NOT EXISTS (SELECT * FROM GIBS_FlexMLS_Favorites 
+                   WHERE UserID = @UserID
+                   AND Favorite = @Favorite
+                   AND ModuleId = @ModuleId)
+   BEGIN
+       insert into GIBS_FlexMLS_Favorites (	ModuleId, Favorite, FavoriteType, UserID, CreatedDate, EmailSearch ) 
+values (@ModuleId, @Favorite, @FavoriteType, @UserID, getdate(),@EmailSearch)
+   END
+END
+
+
+GO
+
+
+
+
+
+

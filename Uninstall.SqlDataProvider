@@ -1,0 +1,44 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+/** Drop FAQs Table **/
+
+ALTER TABLE {databaseOwner}[{objectQualifier}GIBS_FlexMLS] DROP CONSTRAINT [FK_{objectQualifier}GIBS_FlexMLS_{objectQualifier}Modules]
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}GIBS_FlexMLS] DROP CONSTRAINT [PK_{objectQualifier}GIBS_FlexMLS]
+GO
+
+DROP INDEX {databaseOwner}[{objectQualifier}GIBS_FlexMLS].[IX_{objectQualifier}GIBS_FlexMLS]
+GO
+
+DROP TABLE {databaseOwner}[{objectQualifier}GIBS_FlexMLS]
+GO
+
+/** Drop Stored Procedures **/
+
+DROP PROCEDURE {databaseOwner}[{objectQualifier}GIBS_GetFlexMLSs]
+GO
+
+DROP PROCEDURE {databaseOwner}[{objectQualifier}GIBS_GetFlexMLS]
+GO
+
+DROP PROCEDURE {databaseOwner}[{objectQualifier}GIBS_AddFlexMLS]
+GO
+
+DROP PROCEDURE {databaseOwner}[{objectQualifier}GIBS_UpdateFlexMLS]
+GO
+
+DROP PROCEDURE {databaseOwner}[{objectQualifier}GIBS_DeleteFlexMLS]
+GO
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/

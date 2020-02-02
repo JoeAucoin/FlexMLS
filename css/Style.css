@@ -1,0 +1,526 @@
+﻿
+
+.fixlinebreak
+{
+overflow-y:auto;overflow-x:auto; word-break:break-all;
+}
+
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
+
+
+
+.hidebr br
+{
+display:none; 
+}  
+
+
+hr.hrfancy {
+    overflow: visible; /* For IE */
+    padding: 0;
+    border: none;
+    border-top: medium double #333;
+    color: #333;
+    text-align: center;
+}
+hr.hrfancy:after {
+    content: "~§~";
+    display: inline-block;
+    position: relative;
+    top: -0.7em;
+    font-size: 1.5em;
+    padding: 0 0.25em;
+    background: white;
+}
+
+.RegisterUserContent ul
+{
+	font-family:Verdana;
+	font-size: 11px;
+	font-weight:normal;
+	 color:Blue;
+	padding-bottom:0px;
+	padding-top:10px;
+	margin-bottom:0px;
+	
+	
+	}
+
+.hideit
+{
+	 display: none !important;
+	}
+
+
+.resize {
+ width: auto;
+/**   height : auto;  **/
+ border: 1px solid #000000;
+
+
+ }
+
+
+
+.ActionLinks
+{
+	font-size: 11px;
+	}
+
+.showhidemap
+{
+	
+		font-family:Verdana;
+	font-size: 11px;
+	font-weight:normal;
+	text-align:right;
+	padding-bottom:10px;
+	padding-top:10px;
+	}
+
+.searchcriterialabel
+{
+		font-family:Verdana;
+	font-size: 12px;
+	font-weight:bold;
+	padding-bottom:0px;
+	padding-top:10px;
+	}
+
+.searchcriteria
+{
+		font-family:Verdana;
+	font-size: 11px;
+	padding-bottom:10px;
+	padding-top:5px;
+	}
+
+
+.summary
+{
+	font-family:Verdana;
+	font-size: 14px;
+	font-weight:bold;
+	padding-bottom:2px;
+	padding-top:10px;
+	padding-left:15px;
+	
+	}
+	
+.listingstatus
+{
+	font-family:Verdana;
+	font-size: 11px;
+	font-weight:bold;
+	padding-bottom:10px;
+	padding-top:10px;
+	
+	
+	}
+
+
+.ListingOfficeName
+{
+	font-family:Verdana;
+	font-size: 11px;
+	font-weight:normal;
+	text-align:center;
+	}
+
+.ListingAddress
+	
+	{
+	
+	font-size: 1.4em;
+	font-weight:bold;
+		
+	}
+
+.ListingPrice
+{
+		font-family:Verdana;
+	font-size: 14px;
+	font-weight:bold;
+	
+	
+	}
+
+.ListListingPrice
+{
+		font-family:Verdana;
+	font-size: 1.5em;
+	font-weight:bold;
+    text-align:center;
+	
+	
+	}
+	
+.ListingDetails
+{
+	font-family:Verdana;
+	font-size: 12px;
+	
+		}	
+
+.MarketingRemarks
+{
+	font-family:Verdana;
+	font-size: 1.1em;
+	text-align:justify;
+	padding: 10px 10px 10px 10px;
+    
+    width:100%;
+
+	
+}
+
+.ListingActions
+{
+	 width:100%;
+	 text-align:center;
+	padding: 10px 0px 10px 0px;
+	}
+	
+	
+	
+.ListingLinks
+{
+ text-align:center;
+ padding-top: 10px;
+ padding-bottom: 10px;
+
+	}
+	
+.returntosearch
+{
+ width: 100%;
+    text-align:right;
+ padding-top: 10px;
+ padding-bottom: 10px;	
+	}
+
+	
+.imageStyle {
+    
+         background-color: #FFFFFF;
+     
+         padding: 0px;
+         margin:15px;
+         
+        
+      }
+      
+.listingimageStyle {
+    
+         background-color: #000000;
+     
+         
+         padding: 1px 1px 1px 1px;
+         margin: 0px 0px 0px 15px;
+         
+        
+      }
+      
+
+	
+.disclaimer
+{
+	
+	font-family:Verdana;
+	font-size: 10px;
+	text-align:justify;
+	padding: 10px 30px 10px 30px;	
+	}	
+	
+	
+/*.brlogo
+{
+	text-align:right;
+	
+	}*/	
+	
+.ListingTableInner
+{
+	
+	
+	}
+	
+	
+td.featurelabel
+{
+	font-family:Verdana;
+	font-size: 12px;
+	font-weight:bold;
+	text-align:right;
+	vertical-align:top;
+	padding-right:10px;
+	width:186px;
+	}
+	
+.featuredata
+{
+		font-family:Verdana;
+	font-size: 12px;
+	font-weight:normal;
+	text-align:left;
+	
+	}		
+	
+	
+.featuredata_alignright
+{
+	font-family:Verdana;
+	font-size: 12px;
+	font-weight:normal;
+	text-align:right;
+	}	
+	
+	
+	#newspaper-b
+{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	padding: 5px 5px 0px 5px;
+	width: 100%;
+	text-align: left;
+	border-collapse: collapse;
+	border: 1px solid #69c;
+}
+#newspaper-b th
+{
+	padding: 15px 10px 10px 10px;
+	font-weight: normal;
+	text-align: center;
+	font-size: 14px;
+	color: #039;
+}
+#newspaper-b tbody
+{
+	background: #e8edff;
+}
+#newspaper-b td
+{
+	padding: 10px;
+	color: #669;
+	border-top: 1px dashed #69c;
+}
+#newspaper-b tbody tr:hover td
+{
+	color: #339;
+	background: #d0dafd;
+}
+
+#newspaper-b tbody tr:hover th
+{
+	color: #339;
+	background: #d0dafd;
+}
+
+
+tbl_singlefamily
+
+	#tbl_singlefamily
+{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	/*padding: 5px 5px 0px 5px; */
+	width: 100%;
+	
+	border-collapse: collapse;
+	border: 1px solid #69c;
+}
+#tbl_singlefamily th
+{
+	padding: 15px 10px 10px 10px;
+	color: #039;
+}
+#tbl_singlefamily tbody
+{
+	background: #e8edff;
+}
+#tbl_singlefamily td
+{
+	padding: 15px 10px 10px 10px;
+	color: #039;
+}
+#tbl_singlefamily tbody tr:hover td
+{
+/*	color: #339;
+	background: #d0dafd; */
+}
+
+#tbl_singlefamily tbody tr:hover td
+{
+	color: #339;
+	background: #d0dafd;
+}
+
+
+
+.PagingTable { 
+width: 540px; 
+background-color: #FFFFFF; 
+BORDER-RIGHT: #003366 0px solid; 
+BORDER-TOP: #003366 0px solid; 
+BORDER-LEFT: #003366 0px solid; 
+BORDER-BOTTOM: #003366 1px solid; 
+ margin-left:auto;
+ margin-right:auto;
+} 
+
+.PagingTable { height: 33px; }
+
+
+.mGrid { width: 100%; background-color: #fff; margin: 5px 0 10px 0; border: solid 1px #525252; border-collapse:collapse; }
+    .mGrid td { padding: 2px; border: solid 1px #c1c1c1; color: #717171; }
+    .mGrid th { padding: 4px 2px; color: #fff; background: #424242 url(grd_head.png) repeat-x top; border-left: solid 1px #525252; font-size: 0.9em; text-align:center; }
+.mGrid .alt { background: #fcfcfc url(grd_alt.png) repeat-x top; }
+.mGrid .pgr {background: #424242 url(grd_pgr.png) repeat-x top; }
+    .mGrid .pgr table { margin: 5px 0; }
+    .mGrid .pgr td { border-width: 0; padding: 0 6px; border-left: solid 1px #666; font-weight: bold; color: #fff; line-height: 12px; }   
+    .mGrid .pgr a { color: #666; text-decoration: none; }
+    .mGrid .pgr a:hover { color: #000; text-decoration: none; }
+    
+    
+    
+.prettyBorder
+
+{
+	border: 0px solid black;
+	}  
+	
+	
+.prettyColor
+{
+	
+	background-color: #f1f1f1;
+	}	  
+	.prettyColor:hover
+{
+	
+	background-color: #ffffff;
+	}
+    
+    
+/*  SECTIONS  */
+.mlsSection {
+	
+	padding: 0px;
+	margin: 0px;
+    display:inline-block;
+    width:400px;
+}
+
+/*  COLUMN SETUP  border: 1px solid red;  */
+.collayout {
+	display: block;
+	float:left;
+	margin: 1% 0 1% 1.0%;
+}
+.collayout:first-child { margin-left: 0; }
+
+/*  GROUPING  */
+.mlsGroup:before,
+.mlsGroup:after { content:""; display:table; }
+.mlsGroup:after { clear:both;}
+.mlsGroup { zoom:1; /* For IE 6/7 */ }
+    
+/*  GRID OF THREE  */
+/*  GRID OF THREE  */
+.span_3_of_3 { width: 100%; }
+.span_2_of_3 { width: 66.33%; }
+.span_1_of_3 { width: 32.66%; }
+
+
+/*  GRID OF FOUR  */
+/*  GRID OF FOUR  */
+.span_4_of_4 {
+	width: 100%;
+}
+.span_3_of_4 {
+	width: 74.75%;
+}
+.span_2_of_4 {
+	width: 49.5%;
+}
+.span_1_of_4 {
+	width: 24.25%;
+}
+
+
+
+
+/*  GRID OF TWELVE  */
+.span_12_of_12 {
+	width: 100%;
+}
+
+.span_11_of_12 {
+  	width: 91.58%;
+}
+.span_10_of_12 {
+  	width: 83.16%;
+}
+
+.span_9_of_12 {
+  	width: 74.75%;
+}
+
+.span_8_of_12 {
+  	width: 66.33%;
+}
+
+.span_7_of_12 {
+  	width: 57.91%;
+}
+
+.span_6_of_12 {
+  	width: 49.5%;
+}
+
+.span_5_of_12 {
+  	width: 41.08%;
+}
+
+.span_4_of_12 {
+  	width: 32.66%;
+}
+
+.span_3_of_12 {
+  	width: 24.25%;
+}
+
+.span_2_of_12 {
+  	width: 15.83%;
+}
+
+.span_1_of_12 {
+  	width: 7.416%;
+}
+
+/*  GO FULL WIDTH BELOW 480 PIXELS */
+@media only screen and (max-width: 480px) {
+    .col {
+        margin: 1% 0 1% 0%;
+    }
+
+    .span_3_of_3, .span_2_of_3, .span_1_of_3 {
+        width: 100%;
+    }
+
+    .span_1_of_4, .span_2_of_4, .span_3_of_4, .span_4_of_4 {
+        width: 100%;
+    }
+
+    .span_1_of_12, .span_2_of_12, .span_3_of_12, .span_4_of_12, .span_5_of_12, .span_6_of_12, .span_7_of_12, .span_8_of_12, .span_9_of_12, .span_10_of_12, .span_11_of_12, .span_12_of_12 {
+        width: 100%;
+    }
+}
+
+
+

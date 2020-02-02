@@ -1,0 +1,400 @@
+﻿
+
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_GIBS_FlexMLS_Favorites_Modules]') AND parent_object_id = OBJECT_ID(N'[dbo].[GIBS_FlexMLS_Favorites]'))
+ALTER TABLE [dbo].[GIBS_FlexMLS_Favorites] DROP CONSTRAINT [FK_GIBS_FlexMLS_Favorites_Modules]
+GO
+
+IF  EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[EmailSearchDefaultFlex]') AND type = 'D')
+BEGIN
+ALTER TABLE [dbo].[GIBS_FlexMLS_Favorites] DROP CONSTRAINT [EmailSearchDefaultFlex]
+END
+
+GO
+
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_GIBS_FlexMLS_ListingViews_Modules]') AND parent_object_id = OBJECT_ID(N'[dbo].[GIBS_FlexMLS_ListingViews]'))
+ALTER TABLE [dbo].[GIBS_FlexMLS_ListingViews] DROP CONSTRAINT [FK_GIBS_FlexMLS_ListingViews_Modules]
+GO
+
+
+/****** Object:  Table [dbo].[GIBS_FlexMLS_Favorites]    Script Date: 03/20/2017 06:40:54 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[GIBS_FlexMLS_Favorites]') AND type in (N'U'))
+DROP TABLE [dbo].[GIBS_FlexMLS_Favorites]
+GO
+
+/****** Object:  Table [dbo].[GIBS_FlexMLS_ListingViews]    Script Date: 03/20/2017 06:40:54 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[GIBS_FlexMLS_ListingViews]') AND type in (N'U'))
+DROP TABLE [dbo].[GIBS_FlexMLS_ListingViews]
+GO
+
+
+/****** Object:  Table [dbo].[GIBS_FlexMLS_Favorites]    Script Date: 03/20/2017 06:40:54 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[GIBS_FlexMLS_Favorites](
+	[ModuleID] [int] NOT NULL,
+	[ItemID] [int] IDENTITY(1,1) NOT NULL,
+	[Favorite] [varchar](500) NOT NULL,
+	[FavoriteType] [varchar](10) NOT NULL,
+	[UserID] [int] NOT NULL,
+	[CreatedDate] [datetime] NOT NULL,
+	[EmailSearch] [bit] NOT NULL,
+ CONSTRAINT [PK_GIBS_FlexMLS_Favorites] PRIMARY KEY CLUSTERED 
+(
+	[ItemID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+
+/****** Object:  Table [dbo].[GIBS_FlexMLS_ListingViews]    Script Date: 03/20/2017 06:40:54 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[GIBS_FlexMLS_ListingViews](
+	[ModuleID] [int] NOT NULL,
+	[ItemID] [int] IDENTITY(1,1) NOT NULL,
+	[ListingNumber] [int] NOT NULL,
+	[ListingPrice] [money] NULL,
+	[Content] [ntext] NOT NULL,
+	[CreatedByUserID] [int] NOT NULL,
+	[CreatedDate] [datetime] NOT NULL,
+ CONSTRAINT [PK_GIBS_FlexMLS_ListingViews] PRIMARY KEY CLUSTERED 
+(
+	[ItemID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[GIBS_FlexMLS_Favorites]  WITH NOCHECK ADD  CONSTRAINT [FK_GIBS_FlexMLS_Favorites_Modules] FOREIGN KEY([ModuleID])
+REFERENCES [dbo].[Modules] ([ModuleID])
+ON DELETE CASCADE
+NOT FOR REPLICATION 
+GO
+
+ALTER TABLE [dbo].[GIBS_FlexMLS_Favorites] CHECK CONSTRAINT [FK_GIBS_FlexMLS_Favorites_Modules]
+GO
+
+ALTER TABLE [dbo].[GIBS_FlexMLS_Favorites] ADD  CONSTRAINT [EmailSearchDefaultFlex]  DEFAULT ((0)) FOR [EmailSearch]
+GO
+
+ALTER TABLE [dbo].[GIBS_FlexMLS_ListingViews]  WITH NOCHECK ADD  CONSTRAINT [FK_GIBS_FlexMLS_ListingViews_Modules] FOREIGN KEY([ModuleID])
+REFERENCES [dbo].[Modules] ([ModuleID])
+ON DELETE CASCADE
+NOT FOR REPLICATION 
+GO
+
+ALTER TABLE [dbo].[GIBS_FlexMLS_ListingViews] CHECK CONSTRAINT [FK_GIBS_FlexMLS_ListingViews_Modules]
+GO
+
+
+
+
+/****** Object:  StoredProcedure [dbo].[GIBS_FlexMLS_Favorites_Add]    Script Date: 03/20/2017 06:42:39 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[GIBS_FlexMLS_Favorites_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[GIBS_FlexMLS_Favorites_Add]
+GO
+
+/****** Object:  StoredProcedure [dbo].[GIBS_FlexMLS_Favorites_Delete]    Script Date: 03/20/2017 06:42:39 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[GIBS_FlexMLS_Favorites_Delete]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[GIBS_FlexMLS_Favorites_Delete]
+GO
+
+/****** Object:  StoredProcedure [dbo].[GIBS_FlexMLS_Favorites_Delete_By_MlsNumber]    Script Date: 03/20/2017 06:42:39 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[GIBS_FlexMLS_Favorites_Delete_By_MlsNumber]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[GIBS_FlexMLS_Favorites_Delete_By_MlsNumber]
+GO
+
+/****** Object:  StoredProcedure [dbo].[GIBS_FlexMLS_Favorites_Get_List]    Script Date: 03/20/2017 06:42:39 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[GIBS_FlexMLS_Favorites_Get_List]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[GIBS_FlexMLS_Favorites_Get_List]
+GO
+
+/****** Object:  StoredProcedure [dbo].[GIBS_FlexMLS_Favorites_GetEmailSearches]    Script Date: 03/20/2017 06:42:39 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[GIBS_FlexMLS_Favorites_GetEmailSearches]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[GIBS_FlexMLS_Favorites_GetEmailSearches]
+GO
+
+/****** Object:  StoredProcedure [dbo].[GIBS_FlexMLS_Favorites_Update_EmailSearch]    Script Date: 03/20/2017 06:42:39 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[GIBS_FlexMLS_Favorites_Update_EmailSearch]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[GIBS_FlexMLS_Favorites_Update_EmailSearch]
+GO
+
+/****** Object:  StoredProcedure [dbo].[GIBS_FlexMLS_ListingViews_Add]    Script Date: 03/20/2017 06:42:39 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[GIBS_FlexMLS_ListingViews_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[GIBS_FlexMLS_ListingViews_Add]
+GO
+
+/****** Object:  StoredProcedure [dbo].[GIBS_FlexMLS_ListingViews_Get]    Script Date: 03/20/2017 06:42:39 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[GIBS_FlexMLS_ListingViews_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[GIBS_FlexMLS_ListingViews_Get]
+GO
+
+
+
+/****** Object:  StoredProcedure [dbo].[GIBS_FlexMLS_Favorites_Add]    Script Date: 03/20/2017 06:42:39 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE procedure [dbo].[GIBS_FlexMLS_Favorites_Add]
+
+	@ModuleId       int,
+	@Favorite        varchar(500),
+	@FavoriteType        varchar(10),
+	@UserID         int,
+	@EmailSearch	bit
+
+as
+
+insert into GIBS_FlexMLS_Favorites (
+	ModuleId,
+       Favorite,
+       FavoriteType,
+       UserID,
+       CreatedDate,
+       EmailSearch
+) 
+values (
+	@ModuleId,
+	@Favorite,
+	@FavoriteType,
+	@UserID,
+	getdate(),
+	@EmailSearch
+)
+
+GO
+
+/****** Object:  StoredProcedure [dbo].[GIBS_FlexMLS_Favorites_Delete]    Script Date: 03/20/2017 06:42:40 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE PROCEDURE [dbo].[GIBS_FlexMLS_Favorites_Delete]
+
+	@ItemID int
+	
+
+as
+BEGIN 
+
+DELETE FROM GIBS_FlexMLS_Favorites
+WHERE     (ItemID = @ItemID)
+
+		
+
+
+END
+
+GO
+
+/****** Object:  StoredProcedure [dbo].[GIBS_FlexMLS_Favorites_Delete_By_MlsNumber]    Script Date: 03/20/2017 06:42:40 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE PROCEDURE [dbo].[GIBS_FlexMLS_Favorites_Delete_By_MlsNumber]
+
+	@ModuleId int,
+	@UserId int,
+	@MlsNumber varchar(20)
+	
+
+as
+BEGIN 
+
+DELETE FROM GIBS_FlexMLS_Favorites
+WHERE      (UserId = @UserId) AND (Favorite = @MlsNumber)
+
+--(ModuleId = @ModuleId) AND		
+
+
+END
+
+GO
+
+/****** Object:  StoredProcedure [dbo].[GIBS_FlexMLS_Favorites_Get_List]    Script Date: 03/20/2017 06:42:40 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE procedure [dbo].[GIBS_FlexMLS_Favorites_Get_List]
+
+	@ModuleId int,
+	@UserID int,
+	@FavoriteType varchar(10)
+
+as
+
+select ModuleId,
+       ItemId,
+       Favorite,
+       FavoriteType,
+       UserID,
+       CreatedDate,
+       EmailSearch
+from GIBS_FlexMLS_Favorites
+
+where   UserID = @UserID AND FavoriteType = @FavoriteType 
+
+--ModuleId = @ModuleId AND
+
+GO
+
+/****** Object:  StoredProcedure [dbo].[GIBS_FlexMLS_Favorites_GetEmailSearches]    Script Date: 03/20/2017 06:42:40 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+-- =============================================
+-- Author:		Joseph Aucoin
+-- Create date: 04/09/2014
+-- Description:	Get searches to be emailed
+-- =============================================
+CREATE PROCEDURE [dbo].[GIBS_FlexMLS_Favorites_GetEmailSearches]
+	
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    SELECT     GIBS_FlexMLS_Favorites.Favorite, 
+			 
+           Users.FirstName + ' ' + Users.LastName as ClientName, 
+           Users.Email as ClientEmail,
+           GIBS_FlexMLS_Favorites.UserID AS ClientID,
+           1 as AgentID,
+           0 as ClientPortalID
+
+FROM         GIBS_FlexMLS_Favorites INNER JOIN
+                      Users ON GIBS_FlexMLS_Favorites.UserID = Users.UserID
+WHERE     (GIBS_FlexMLS_Favorites.FavoriteType = 'Search') AND (GIBS_FlexMLS_Favorites.EmailSearch = 1)  
+
+ORDER BY GIBS_FlexMLS_Favorites.UserID
+    
+END
+
+GO
+
+/****** Object:  StoredProcedure [dbo].[GIBS_FlexMLS_Favorites_Update_EmailSearch]    Script Date: 03/20/2017 06:42:40 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE procedure [dbo].[GIBS_FlexMLS_Favorites_Update_EmailSearch]
+
+	@ItemId       int,
+	@EmailSearch	bit
+
+as
+
+UPDATE [dbo].[GIBS_FlexMLS_Favorites]
+   SET [EmailSearch] = @EmailSearch
+ WHERE  ItemID = @ItemID
+
+GO
+
+/****** Object:  StoredProcedure [dbo].[GIBS_FlexMLS_ListingViews_Add]    Script Date: 03/20/2017 06:42:40 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE procedure [dbo].[GIBS_FlexMLS_ListingViews_Add]
+
+	@ModuleId       int,
+	@Content        ntext,
+	@ListingNumber	int,
+	@ListingPrice	money,
+	@CreatedByUserID   int
+
+as
+
+insert into GIBS_FlexMLS_ListingViews (
+	ModuleId,
+	ListingNumber,
+	ListingPrice,
+	Content,
+	CreatedByUserID,
+	CreatedDate
+) 
+values (
+	@ModuleId,
+	@ListingNumber,
+	@ListingPrice,
+	@Content,
+	@CreatedByUserID,
+	getdate()
+)
+
+GO
+
+/****** Object:  StoredProcedure [dbo].[GIBS_FlexMLS_ListingViews_Get]    Script Date: 03/20/2017 06:42:40 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE procedure [dbo].[GIBS_FlexMLS_ListingViews_Get]
+
+	@NumberOfRecords int
+
+as
+
+
+
+select top 100 ModuleId,
+       ItemId,
+       Content,
+	   ListingNumber,
+	   ListingPrice,
+       GIBS_FlexMLS_ListingViews.CreatedByUserID,
+       CreatedDate,
+       'CreatedByUserName' = Users.FirstName + ' ' + Users.LastName
+from GIBS_FlexMLS_ListingViews
+left outer join Users on GIBS_FlexMLS_ListingViews.CreatedByUserID = Users.UserId
+--where  ModuleId = @ModuleId 
+
+order by CreatedDate desc
+
+GO
+
+
