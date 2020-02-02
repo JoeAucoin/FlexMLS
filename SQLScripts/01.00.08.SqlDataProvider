@@ -10,6 +10,17 @@ ALTER TABLE GIBS_FlexMLS_ListingViews ADD UpdatedDate DATETIME;
 END
 GO
 
+IF NOT EXISTS (
+  SELECT * 
+  FROM   sys.columns 
+  WHERE  object_id = OBJECT_ID(N'[dbo].[GIBS_FlexMLS_ListingViews]') 
+         AND name = 'ListingViews'
+)
+BEGIN
+ALTER TABLE GIBS_FlexMLS_ListingViews ADD ListingViews int;
+END
+GO
+
 
 /****** Object:  StoredProcedure [dbo].[GIBS_FlexMLS_ListingViews_Add]    Script Date: 12/28/2018 11:38:05 AM ******/
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[GIBS_FlexMLS_ListingViews_Add]') AND type in (N'P', N'PC'))
