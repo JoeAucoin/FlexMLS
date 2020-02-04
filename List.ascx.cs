@@ -1,28 +1,14 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using DotNetNuke.Common.Utilities;
-using DotNetNuke.Common.Controls;
-using DotNetNuke.Entities.Modules;
-using DotNetNuke.Entities.Modules.Actions;
-using DotNetNuke.Services.Exceptions;
-using DotNetNuke.Services.Localization;
-using DotNetNuke.Web.Client;
-using DotNetNuke.Services.ClientCapability;
-using GIBS.Modules.FlexMLS.Components;
-using DotNetNuke.Common;
 using System.Web;
 using System.Text;
-using DotNetNuke.Web.Client.ClientResourceManagement;
-using Subgurim.Controles;
-using Subgurim.Controles.GoogleChartIconMaker;
-using System.Text.RegularExpressions;
-using DotNetNuke.Entities.Tabs;
 using System.Web.UI.HtmlControls;
-//using System.Drawing; 
+using System.Collections.Generic;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using DotNetNuke.Common;
+using DotNetNuke.Entities.Modules;
+using DotNetNuke.Services.Exceptions;
+using GIBS.Modules.FlexMLS.Components;
 
 namespace GIBS.Modules.FlexMLS
 {
@@ -60,10 +46,7 @@ namespace GIBS.Modules.FlexMLS
             if (_ShowListViewMap == true)
             {
                 string myAIPkey = Settings["GoogleMapAPIKey"].ToString();
-                GMap1.Key = myAIPkey.ToString();       
-                GControl control = new GControl(GControl.preBuilt.LargeMapControl);
-
-                GMap1.Add(control);        
+                        
             }
 
 
@@ -585,7 +568,7 @@ namespace GIBS.Modules.FlexMLS
 
                 if (items.Count == 0)
                 {
-                    GMap1.Visible = false;
+                    //GMap1.Visible = false;
                 }
 
                 if (objPagedDataSource.PageCount > 0)
@@ -680,37 +663,37 @@ namespace GIBS.Modules.FlexMLS
         }
 
 
-        public void BuildGoogleMap(double Latitude, double Longitude, string BubbleText)
-        {
+        //public void BuildGoogleMap(double Latitude, double Longitude, string BubbleText)
+        //{
 
-            try
-            {
+        //    try
+        //    {
 
-                GMap1.setCenter(new GLatLng(Latitude, Longitude), 14);
+        //        GMap1.setCenter(new GLatLng(Latitude, Longitude), 14);
 
 
-                GLatLng latlng = new GLatLng(Latitude, Longitude);
+        //        GLatLng latlng = new GLatLng(Latitude, Longitude);
 
-                string vBubbleText = BubbleText.ToString();    // lblListingAddress.Text.ToString() + "<br />" + lblSummary.Text.ToString();
+        //        string vBubbleText = BubbleText.ToString();    // lblListingAddress.Text.ToString() + "<br />" + lblSummary.Text.ToString();
               
-                //  vBubbleText = "<p>JOE</p>";
-                // https://chart.apis.google.com/chart?chst=d_map_xpin_letter&chld=pin_star|+|FF0000|FFFFFF|FFD700
-                // GMarker marker = new GMarker(latlng, new GMarkerOptions(new GIcon(xPinLetter.ToString(), xPinLetter.Shadow())));
+        //        //  vBubbleText = "<p>JOE</p>";
+        //        // https://chart.apis.google.com/chart?chst=d_map_xpin_letter&chld=pin_star|+|FF0000|FFFFFF|FFD700
+        //        // GMarker marker = new GMarker(latlng, new GMarkerOptions(new GIcon(xPinLetter.ToString(), xPinLetter.Shadow())));
 
-                GMarker marker = new GMarker(latlng, new GMarkerOptions(new GIcon("https://chart.apis.google.com/chart?chst=d_map_xpin_letter&chld=pin_star|+|FF0000|FFFFFF|FFD700")));
-                GInfoWindowOptions windowOptions = new GInfoWindowOptions();
-                GInfoWindow commonInfoWindow = new GInfoWindow(marker, vBubbleText.ToString(), false);
-                GMap1.Add(commonInfoWindow);
+        //        GMarker marker = new GMarker(latlng, new GMarkerOptions(new GIcon("https://chart.apis.google.com/chart?chst=d_map_xpin_letter&chld=pin_star|+|FF0000|FFFFFF|FFD700")));
+        //        GInfoWindowOptions windowOptions = new GInfoWindowOptions();
+        //        GInfoWindow commonInfoWindow = new GInfoWindow(marker, vBubbleText.ToString(), false);
+        //        GMap1.Add(commonInfoWindow);
 
 
 
-            }
-            catch (Exception ex)
-            {
-                Exceptions.ProcessModuleLoadException(this, ex);
-            }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Exceptions.ProcessModuleLoadException(this, ex);
+        //    }
 
-        }
+        //}
 
 
         protected void lstSearchResults_ItemDataBound(object sender, System.Web.UI.WebControls.DataListItemEventArgs e)
@@ -721,9 +704,9 @@ namespace GIBS.Modules.FlexMLS
 
                 if (_ShowListViewMap == true)
                 {
-                    GMap1.mapType = GMapType.GTypes.Hybrid;
-                    GMap1.Add(GMapType.GTypes.Normal);      //.addMapType(GMapType.GTypes.Physical);
-                    GMap1.Add(GMapType.GTypes.Physical);
+                    //GMap1.mapType = GMapType.GTypes.Hybrid;
+                    //GMap1.Add(GMapType.GTypes.Normal);      //.addMapType(GMapType.GTypes.Physical);
+                    //GMap1.Add(GMapType.GTypes.Physical);
                 }
                 string _ListingNumber = "";
                 string _PropertyType = "";
@@ -1025,18 +1008,18 @@ namespace GIBS.Modules.FlexMLS
                         + "<br/><a href='" + vLink.ToString() + "'>MLS " + _ListingNumber.ToString() + "<br/>View Listing</a></div>";
                     //  _bubbleText = "";
 
-                    if (_ShowListViewMap == true)
-                    {
-                        if (_lat > 0)
-                        {
-                            BuildGoogleMap(_lat, _log, _bubbleText.ToString());
-                        }
-                    }
-                    else 
-                    {
-                        GMap1.Visible = false;
+                    //if (_ShowListViewMap == true)
+                    //{
+                    //    if (_lat > 0)
+                    //    {
+                    //        BuildGoogleMap(_lat, _log, _bubbleText.ToString());
+                    //    }
+                    //}
+                    //else 
+                    //{
+                    //    GMap1.Visible = false;
                         
-                    }
+                    //}
 
 
 

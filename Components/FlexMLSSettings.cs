@@ -39,7 +39,7 @@ namespace GIBS.Modules.FlexMLS.Components
             {
                 var mc = new ModuleController();
 
-                mc.UpdateTabModuleSetting(TabModuleId, "Recaptcha", value.ToString());
+                mc.UpdateModuleSetting(ModuleId, "Recaptcha", value.ToString());
             }
         }
 
@@ -56,7 +56,7 @@ namespace GIBS.Modules.FlexMLS.Components
             set
             {
                 var mc = new ModuleController();
-                mc.UpdateTabModuleSetting(TabModuleId, "RetsVersion", value.ToString());
+                mc.UpdateModuleSetting(ModuleId, "RetsVersion", value.ToString());
             }
         }
 
@@ -72,7 +72,7 @@ namespace GIBS.Modules.FlexMLS.Components
             set
             {
                 var mc = new ModuleController();
-                mc.UpdateTabModuleSetting(TabModuleId, "RetsUserAgent", value.ToString());
+                mc.UpdateModuleSetting(ModuleId, "RetsUserAgent", value.ToString());
             }
         }
 
@@ -87,7 +87,7 @@ namespace GIBS.Modules.FlexMLS.Components
             set
             {
                 var mc = new ModuleController();
-                mc.UpdateTabModuleSetting(TabModuleId, "RetsUserAgentAuthType", value.ToString());
+                mc.UpdateModuleSetting(ModuleId, "RetsUserAgentAuthType", value.ToString());
             }
         }
 
@@ -102,7 +102,7 @@ namespace GIBS.Modules.FlexMLS.Components
             set
             {
                 var mc = new ModuleController();
-                mc.UpdateTabModuleSetting(TabModuleId, "RetsUserAgentPassword", value.ToString());
+                mc.UpdateModuleSetting(ModuleId, "RetsUserAgentPassword", value.ToString());
             }
         }
 
@@ -117,7 +117,7 @@ namespace GIBS.Modules.FlexMLS.Components
             set
             {
                 var mc = new ModuleController();
-                mc.UpdateTabModuleSetting(TabModuleId, "RetsUserName", value.ToString());
+                mc.UpdateModuleSetting(ModuleId, "RetsUserName", value.ToString());
             }
         }
 
@@ -132,7 +132,7 @@ namespace GIBS.Modules.FlexMLS.Components
             set
             {
                 var mc = new ModuleController();
-                mc.UpdateTabModuleSetting(TabModuleId, "RetsPassword", value.ToString());
+                mc.UpdateModuleSetting(ModuleId, "RetsPassword", value.ToString());
             }
         }
 
@@ -147,7 +147,7 @@ namespace GIBS.Modules.FlexMLS.Components
             set
             {
                 var mc = new ModuleController();
-                mc.UpdateTabModuleSetting(TabModuleId, "RetsImageDirectory", value.ToString());
+                mc.UpdateModuleSetting(ModuleId, "RetsImageDirectory", value.ToString());
             }
         }
 
@@ -162,7 +162,7 @@ namespace GIBS.Modules.FlexMLS.Components
             set
             {
                 var mc = new ModuleController();
-                mc.UpdateTabModuleSetting(TabModuleId, "RetsImageDownLoadTestMode", value.ToString());
+                mc.UpdateModuleSetting(ModuleId, "RetsImageDownLoadTestMode", value.ToString());
             }
         }
 
@@ -177,7 +177,7 @@ namespace GIBS.Modules.FlexMLS.Components
             set
             {
                 var mc = new ModuleController();
-                mc.UpdateTabModuleSetting(TabModuleId, "MlsServer", value.ToString());
+                mc.UpdateModuleSetting(ModuleId, "MlsServer", value.ToString());
             }
         }
 
@@ -192,7 +192,7 @@ namespace GIBS.Modules.FlexMLS.Components
             set
             {
                 var mc = new ModuleController();
-                mc.UpdateTabModuleSetting(TabModuleId, "MlsDataBase", value.ToString());
+                mc.UpdateModuleSetting(ModuleId, "MlsDataBase", value.ToString());
             }
         }
 
@@ -208,7 +208,7 @@ namespace GIBS.Modules.FlexMLS.Components
             set
             {
                 var mc = new ModuleController();
-                mc.UpdateTabModuleSetting(TabModuleId, "MlsLogin", value.ToString());
+                mc.UpdateModuleSetting(ModuleId, "MlsLogin", value.ToString());
             }
         }
 
@@ -223,7 +223,7 @@ namespace GIBS.Modules.FlexMLS.Components
             set
             {
                 var mc = new ModuleController();
-                mc.UpdateTabModuleSetting(TabModuleId, "MlsPassword", value.ToString());
+                mc.UpdateModuleSetting(ModuleId, "MlsPassword", value.ToString());
             }
         }
 
@@ -238,7 +238,7 @@ namespace GIBS.Modules.FlexMLS.Components
             set
             {
                 var mc = new ModuleController();
-                mc.UpdateTabModuleSetting(TabModuleId, "ThumbImageAlign", value.ToString());
+                mc.UpdateModuleSetting(ModuleId, "ThumbImageAlign", value.ToString());
             }
         }
 
@@ -254,7 +254,7 @@ namespace GIBS.Modules.FlexMLS.Components
             set
             {
                 var mc = new ModuleController();
-                mc.UpdateTabModuleSetting(TabModuleId, "MaxThumbSize", value.ToString());
+                mc.UpdateModuleSetting(ModuleId, "MaxThumbSize", value.ToString());
             }
         }
 
@@ -269,7 +269,7 @@ namespace GIBS.Modules.FlexMLS.Components
             set
             {
                 var mc = new ModuleController();
-                mc.UpdateTabModuleSetting(TabModuleId, "MaxImageSize", value.ToString());
+                mc.UpdateModuleSetting(ModuleId, "MaxImageSize", value.ToString());
             }
         }
 
@@ -287,7 +287,7 @@ namespace GIBS.Modules.FlexMLS.Components
             set
             {
                 var mc = new ModuleController();
-                mc.UpdateTabModuleSetting(TabModuleId, "ZillowWebServiceId", value.ToString());
+                mc.UpdateModuleSetting(ModuleId, "ZillowWebServiceId", value.ToString());
             }
         }
 
@@ -303,7 +303,7 @@ namespace GIBS.Modules.FlexMLS.Components
             set
             {
                 var mc = new ModuleController();
-                mc.UpdateTabModuleSetting(TabModuleId, "ZillowUserId", value.ToString());
+                mc.UpdateModuleSetting(ModuleId, "ZillowUserId", value.ToString());
             }
         }
 
@@ -318,7 +318,7 @@ namespace GIBS.Modules.FlexMLS.Components
             set
             {
                 var mc = new ModuleController();
-                mc.UpdateTabModuleSetting(TabModuleId, "ZillowAutoRunData", value.ToString());
+                mc.UpdateModuleSetting(ModuleId, "ZillowAutoRunData", value.ToString());
             }
         }
 
@@ -333,7 +333,7 @@ namespace GIBS.Modules.FlexMLS.Components
             set
             {
                 var mc = new ModuleController();
-                mc.UpdateTabModuleSetting(TabModuleId, "AgentRole", value.ToString());
+                mc.UpdateModuleSetting(ModuleId, "AgentRole", value.ToString());
             }
         }
 
@@ -348,7 +348,7 @@ namespace GIBS.Modules.FlexMLS.Components
             set
             {
                 var mc = new ModuleController();
-                mc.UpdateTabModuleSetting(TabModuleId, "EmailToDefault", value.ToString());
+                mc.UpdateModuleSetting(ModuleId, "EmailToDefault", value.ToString());
             }
         }
 
@@ -363,7 +363,7 @@ namespace GIBS.Modules.FlexMLS.Components
             set
             {
                 var mc = new ModuleController();
-                mc.UpdateTabModuleSetting(TabModuleId, "EmailFrom", value.ToString());
+                mc.UpdateModuleSetting(ModuleId, "EmailFrom", value.ToString());
             }
         }
 
@@ -379,7 +379,7 @@ namespace GIBS.Modules.FlexMLS.Components
             set
             {
                 var mc = new ModuleController();
-                mc.UpdateTabModuleSetting(TabModuleId, "EmailBCC", value.ToString());
+                mc.UpdateModuleSetting(ModuleId, "EmailBCC", value.ToString());
             }
         }
 
@@ -395,7 +395,7 @@ namespace GIBS.Modules.FlexMLS.Components
             set
             {
                 var mc = new ModuleController();
-                mc.UpdateTabModuleSetting(TabModuleId, "EmailSubject", value.ToString());
+                mc.UpdateModuleSetting(ModuleId, "EmailSubject", value.ToString());
             }
         }
 
@@ -411,7 +411,7 @@ namespace GIBS.Modules.FlexMLS.Components
             set
             {
                 var mc = new ModuleController();
-                mc.UpdateTabModuleSetting(TabModuleId, "GoogleMapAPIKey", value.ToString());
+                mc.UpdateModuleSetting(ModuleId, "GoogleMapAPIKey", value.ToString());
             }
         }
 
@@ -426,7 +426,7 @@ namespace GIBS.Modules.FlexMLS.Components
             set
             {
                 var mc = new ModuleController();
-                mc.UpdateTabModuleSetting(TabModuleId, "MLSImagesUrl", value.ToString());
+                mc.UpdateModuleSetting(ModuleId, "MLSImagesUrl", value.ToString());
                 
             }
         }	

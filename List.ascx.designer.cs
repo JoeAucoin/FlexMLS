@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GIBS.Modules.FlexMLS {
-    
-    
-    public partial class List {
-        
+namespace GIBS.Modules.FlexMLS
+{
+
+
+    public partial class List
+    {
+
         /// <summary>
         /// DnnCssInclude1 control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace GIBS.Modules.FlexMLS {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DotNetNuke.Web.Client.ClientResourceManagement.DnnCssInclude DnnCssInclude1;
-        
+
         /// <summary>
         /// lblDebug control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace GIBS.Modules.FlexMLS {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblDebug;
-        
+
         /// <summary>
         /// lblPopupContent control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace GIBS.Modules.FlexMLS {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblPopupContent;
-        
+
         /// <summary>
         /// linkButtonFavorites control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace GIBS.Modules.FlexMLS {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton linkButtonFavorites;
-        
+
         /// <summary>
         /// HyperLinkNewSearch control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace GIBS.Modules.FlexMLS {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink HyperLinkNewSearch;
-        
+
         /// <summary>
         /// lblSearchSummary control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace GIBS.Modules.FlexMLS {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSearchSummary;
-        
+
         /// <summary>
         /// lblSearchCriteria control.
         /// </summary>
@@ -74,16 +76,7 @@ namespace GIBS.Modules.FlexMLS {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSearchCriteria;
-        
-        /// <summary>
-        /// GMap1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Subgurim.Controles.GMap GMap1;
-        
+
         /// <summary>
         /// lstSearchResults control.
         /// </summary>
@@ -92,7 +85,7 @@ namespace GIBS.Modules.FlexMLS {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DataList lstSearchResults;
-        
+
         /// <summary>
         /// PagingControl1 control.
         /// </summary>
@@ -101,7 +94,7 @@ namespace GIBS.Modules.FlexMLS {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DotNetNuke.UI.WebControls.PagingControl PagingControl1;
-        
+
         /// <summary>
         /// Image1 control.
         /// </summary>

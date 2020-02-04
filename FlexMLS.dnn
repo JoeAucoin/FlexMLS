@@ -91,10 +91,6 @@
           <path>bin</path>
           <name>GIBS.Modules.FlexMLS.dll</name>
         </assembly>
-        <assembly>
-          <path>bin</path>
-          <name>GMaps.dll</name>
-        </assembly>
       </assemblies>
     </component>
       </components>

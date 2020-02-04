@@ -31,7 +31,7 @@ namespace GIBS.Modules.FlexMLS
                     {
                              // Settings["AgentRole"].ToString();
                     }
-
+                    
                     if (Settings.Contains("Recaptcha"))
                     {
                         txtRecaptcha.Text = Settings["Recaptcha"].ToString();
@@ -225,35 +225,30 @@ namespace GIBS.Modules.FlexMLS
             {
 
                 AgentRole = ddlAgentRole.SelectedValue.ToString();
-
-                var modules = new ModuleController();
-
-                modules.UpdateTabModuleSetting(TabModuleId, "MlsDataBase", txtDataBase.Text.ToString());
-                modules.UpdateTabModuleSetting(TabModuleId, "MlsLogin", txtLogin.Text.ToString());
-                modules.UpdateTabModuleSetting(TabModuleId, "MlsPassword", txtPassword.Text);
-                modules.UpdateTabModuleSetting(TabModuleId, "MlsServer", txtServer.Text);
-                modules.UpdateTabModuleSetting(TabModuleId, "MaxThumbSize", txtThumbSize.Text);
-                modules.UpdateTabModuleSetting(TabModuleId, "ThumbImageAlign", rblThumbPlacement.SelectedValue.ToString());
-                modules.UpdateTabModuleSetting(TabModuleId, "MaxImageSize", txtMaxImageSize.Text.ToString());
-                modules.UpdateTabModuleSetting(TabModuleId, "ZillowWebServiceId", txtZillowWebServiceId.Text.ToString());
-                modules.UpdateTabModuleSetting(TabModuleId, "ZillowUserId", txtZillowUserId.Text.ToString());
-           //     modules.UpdateTabModuleSetting(TabModuleId, "AgentRole", ddlAgentRole.SelectedValue.ToString());
-                modules.UpdateTabModuleSetting(TabModuleId, "EmailBCC", txtEmailBCC.Text);
-                modules.UpdateTabModuleSetting(TabModuleId, "EmailFrom", txtEmailFrom.Text);
-                modules.UpdateTabModuleSetting(TabModuleId, "EmailSubject", txtEmailSubject.Text);
-                modules.UpdateTabModuleSetting(TabModuleId, "EmailToDefault", txtEmailToDefault.Text);
-                modules.UpdateTabModuleSetting(TabModuleId, "ZillowAutoRunData", cbxAutoRunZillow.Checked.ToString());
-                modules.UpdateTabModuleSetting(TabModuleId, "GoogleMapAPIKey", txtGoogleMapAPIKey.Text.ToString());
-                modules.UpdateTabModuleSetting(TabModuleId, "MLSImagesUrl", txtMLSImagesUrl.Text.ToString());
-                modules.UpdateTabModuleSetting(TabModuleId, "Recaptcha", txtRecaptcha.Text.ToString());
-               
-                modules.UpdateTabModuleSetting(TabModuleId, "RetsVersion", txtRetsVersion.Text.ToString());
-                modules.UpdateTabModuleSetting(TabModuleId, "RetsUserAgent", txtRetsUserAgent.Text.ToString());
-                modules.UpdateTabModuleSetting(TabModuleId, "RetsUserAgentPassword", txtRetsUserAgentPassword.Text.ToString());
-                modules.UpdateTabModuleSetting(TabModuleId, "RetsUserName", txtRetsUserName.Text.ToString());
-                modules.UpdateTabModuleSetting(TabModuleId, "RetsPassword", txtRetsPassword.Text.ToString());
-                modules.UpdateTabModuleSetting(TabModuleId, "RetsImageDirectory", txtRetsImageDirectory.Text.ToString());
-                modules.UpdateTabModuleSetting(TabModuleId, "RetsImageDownLoadTestMode", cbxImageDownLoadTestMode.Checked.ToString());
+                MlsDataBase = txtDataBase.Text.ToString();
+                MlsLogin = txtLogin.Text.ToString();
+                MlsPassword = txtPassword.Text.ToString();
+                MlsServer = txtServer.Text.ToString();
+                MaxThumbSize = txtThumbSize.Text.ToString();
+                ThumbImageAlign = rblThumbPlacement.SelectedValue.ToString();
+                MaxImageSize = txtMaxImageSize.Text.ToString();
+                ZillowWebServiceId = txtZillowWebServiceId.Text.ToString();
+                ZillowUserId = txtZillowUserId.Text.ToString();
+                EmailBCC = txtEmailBCC.Text.ToString();
+                EmailFrom = txtEmailFrom.Text.ToString();
+                EmailSubject = txtEmailSubject.Text.ToString();
+                EmailToDefault = txtEmailToDefault.Text.ToString();
+                ZillowAutoRunData = cbxAutoRunZillow.Checked.ToString();
+                GoogleMapAPIKey = txtGoogleMapAPIKey.Text.ToString();
+                MLSImagesUrl = txtMLSImagesUrl.Text.ToString();
+                Recaptcha = txtRecaptcha.Text.ToString();
+                RetsVersion = txtRetsVersion.Text.ToString();
+                RetsUserAgent = txtRetsUserAgent.Text.ToString();
+                RetsUserAgentPassword = txtRetsUserAgentPassword.Text.ToString();
+                RetsUserName = txtRetsUserName.Text.ToString();
+                RetsPassword = txtRetsPassword.Text.ToString();
+                RetsImageDirectory = txtRetsImageDirectory.Text.ToString();
+                RetsImageDownLoadTestMode = cbxImageDownLoadTestMode.Checked.ToString();
              
             }
             catch (Exception ex)
