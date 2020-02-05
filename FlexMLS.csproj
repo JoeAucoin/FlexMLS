@@ -199,6 +199,7 @@
     <Content Include="BuildScripts\MSBuild.Community.Tasks.Targets" />
     <Content Include="packages.config" />
     <Content Include="SQLScripts\01.00.08.SqlDataProvider" />
+    <Content Include="README.md" />
     <None Include="SQLScripts\01.00.00.SqlDataProvider" />
     <None Include="FlexMLS.dnn" />
     <Content Include="SQLScripts\01.00.10.SqlDataProvider" />

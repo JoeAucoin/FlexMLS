@@ -273,9 +273,7 @@ namespace GIBS.Modules.FlexMLS.Components
             }
         }
 
-        //zillowWebServiceId
-        //  X1-ZWz1cs7xazgk5n_6msnx
-
+        
         public string ZillowWebServiceId
         {
             get
@@ -291,7 +289,7 @@ namespace GIBS.Modules.FlexMLS.Components
             }
         }
 
-        //ezuid = X1-ZUz5hecxwfcoax_9iqqx
+        
         public string ZillowUserId
         {
             get

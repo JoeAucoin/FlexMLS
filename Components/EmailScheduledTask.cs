@@ -97,8 +97,7 @@ namespace GIBS.Modules.FlexMLS.Components
 
                 UserInfo _currentUser1 = DotNetNuke.Entities.Users.UserController.GetUserById(0, 1);
                 var notificationType1 = NotificationsController.Instance.GetNotificationType("HtmlNotification");
-          //      var portalSettings = PortalController.GetCurrentPortalSettings();
-                //var sender = UserController.GetUserById(portalSettings.PortalId, portalSettings.AdministratorId);
+
                 var sender1 = UserController.GetUserById(0, 1);
                 var notification1 = new Notification { NotificationTypeID = notificationType1.NotificationTypeId, Subject = subject1, Body = body1, IncludeDismissAction = true, SenderUserID = sender1.UserID };
                 NotificationsController.Instance.SendNotification(notification1, 0, null, new List<UserInfo> { _currentUser1 });
@@ -132,17 +131,12 @@ namespace GIBS.Modules.FlexMLS.Components
                 StringBuilder EmailContentHTML = new StringBuilder();
                 EmailContentHTML.Capacity = 5000;
 
-
-
-
                 EmailContentHTML.Append("<style type=\"text/css\">" + Environment.NewLine);
                 EmailContentHTML.Append(".Section{font-weight: bold; font-family: Verdana, Tahoma;font-size: 14px;}" + Environment.NewLine);
                 EmailContentHTML.Append(".Value{font-weight: normal; font-family: Verdana, Tahoma;font-size: 12px;}" + Environment.NewLine);
                 EmailContentHTML.Append(".Footer{font-weight: normal; font-family: Verdana, Tahoma;font-size: 10px;line-height:150%;}" + Environment.NewLine);
                 EmailContentHTML.Append("</style>" + Environment.NewLine + Environment.NewLine);
 
-
-                
                 EmailContentHTML.Append(Environment.NewLine);
                 EmailContentHTML.Append("<p class=\"Section\">New listings match your search criteria.</p>" + Environment.NewLine);
                 EmailContentHTML.Append("<p class=\"Value\">" + SearchCriteria.ToString() + "</p>" + Environment.NewLine);
@@ -151,10 +145,6 @@ namespace GIBS.Modules.FlexMLS.Components
                 EmailContentHTML.Append("<p class=\"Value\"><a href=\"" + SearchURL.ToString() + "&e=" + DateTime.Today.AddDays(-1).ToString("yyyyMMdd") + "\">CLICK HERE TO VIEW THE LISTINGS</a></p>" + Environment.NewLine);
 
                 EmailContentHTML.Append("<p class=\"Footer\">Some e-mail clients do not support links, cut 'n paste the URL below into a web browser.<br />" + SearchURL.ToString() + "&e=" + DateTime.Today.AddDays(-1).ToString("yyyyMMdd") + "</p>" + Environment.NewLine);
-               // EmailContentHTML.Append("</tr>" + Environment.NewLine);
-
-         
-              
 
                 return EmailContentHTML.ToString();
             }
@@ -410,33 +400,16 @@ namespace GIBS.Modules.FlexMLS.Components
         {
 
             try
-            {
-
- 
-                //string EmailContent = "";
-
-                ////if (content.ToString().Length > 0)
-                ////{
-                //EmailContent = "JOE";      // content.ToString();
-                
-
+            {        
                 //GET THE FROM ADDRESS
-                    string EmailFrom = "josephmaucoin@gmail.com";   // PortalSettings.Current.Email.ToString();
+                    string EmailFrom = DotNetNuke.Entities.Controllers.HostController.Instance.GetString("SMTPUsername").ToString(); 
 
                     this.ScheduleHistoryItem.AddLogNote("<br />EmailFrom: " + EmailFrom.ToString() + "<br />");
                     this.ScheduleHistoryItem.AddLogNote("<br />emailto: " + emailto.ToString() + "<br />");
-             //       DotNetNuke.Services.Mail.Mail.SendEmail(EmailFrom.ToString(), emailto.ToString(), subject.ToString(), content.ToString());
-//                DotNetNuke.Services.Mail.Mail.SendMail(EmailFrom.ToString(), emailto.ToString(), "", subject, EmailContent.ToString(), "", "HTML", "", "", "", "");
-
-
 
                     // NEW
-                    // var hostSettings = HostController.GetSettingsDictionary();  // DotNetNuke.Entities.Host.Host.GetHostSettingsDictionary();
                     string SMTPUserName = DotNetNuke.Entities.Controllers.HostController.Instance.GetString("SMTPUsername");
-
-                    ///hostSettings["SMTPUsername"];
-
-
+                
                     string[] emailAttachemnts1 = null;
                     DotNetNuke.Services.Mail.Mail.SendMail(SMTPUserName.ToString(), 
                         EmailFrom.ToString().Trim(), "", "", 
