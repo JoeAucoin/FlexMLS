@@ -579,10 +579,10 @@ namespace GIBS.Modules.FlexMLS
                     //41.674677,-69.990018
                     
                     _GoogleLatLon = item.Latitude.ToString() + "," + item.Longitude.ToString();
-  
-           //         GetZillowMortgageCalc(Double.Parse(item.ListingPrice.ToString()));
 
-                    ModuleConfiguration.ModuleTitle = "MLS# " + item.ListingNumber.ToString() + " - " + lblListingAddress.Text.ToString();
+                    //         GetZillowMortgageCalc(Double.Parse(item.ListingPrice.ToString()));
+
+                    ModuleConfiguration.ModuleTitle = "MLS# " + item.ListingNumber.ToString();  // + " - " + lblListingAddress.Text.ToString();
 
                     // TRENDING LISTINGS
                     if (_addTrendingListing)
@@ -664,8 +664,7 @@ namespace GIBS.Modules.FlexMLS
                     if (Request.IsAuthenticated)
                     {
                         //string TellAFrinedLink = "";
-                        //TellAFrinedLink = Globals.NavigateURL("View", "pg", "TellAFriend", "MLS", item.ListingNumber.ToString());
-                        //TellAFriendLink = TellAFriendLink.ToString().Replace("ctl/View/", "");
+
                         HyperLinkTellAFriend.NavigateUrl = Globals.NavigateURL("View", "pg", "TellAFriend", "MLS", item.ListingNumber.ToString()).Replace("ctl/View/", "");
                     }
                     else
@@ -675,17 +674,22 @@ namespace GIBS.Modules.FlexMLS
 
                     // GENERAL TABLE
 
-                    if (item.PropertySubType1.ToString() == "COND")
+                    if (item.PropertySubType1.ToString() == "Condominium" || item.FeeAmount > 0)
                     {
                         PanelCondoSpecific.Visible = true;
-                        AddToTableCondo("Complex Name", item.Complex.ToString());  //CONDO COMPLEX NAME 
+                        
+                        if (item.Complex.ToString().Length > 1)
+                        {
+                            AddToTableCondo("Complex Name", item.Complex.ToString());  //CONDO COMPLEX NAME
+                        }
+
                         if (item.MaxNumberOfUnits.ToString().Length > 1)
                         {
                             AddToTableCondo("# of Units", item.MaxNumberOfUnits.ToString());
                         }
-                        if (item.MonthlyFeeAmount.ToString().Length > 1)
+                        if (item.FeeAmount > 0)
                         {
-                            AddToTableCondo("Monthly Fee", item.MonthlyFeeAmount.ToString("C0"));
+                            AddToTableCondo("Fees", String.Format("{0:C0}", item.FeeAmount) + " " + item.FeeFrequency.ToString());
                         }
                         if (item.AssocFeeYear.ToString().Length > 1)
                         {
@@ -693,11 +697,11 @@ namespace GIBS.Modules.FlexMLS
                         }
                         if (item.Amenities.ToString().Length > 1)
                         {
-                            AddToTableCondo("Fee Includes", item.Amenities.ToString());
+                            AddToTableCondo("Fee Includes", AddSpaceAfterComma(item.Amenities.ToString()));
                         }
                         if (item.UnitPlacement.ToString().Length > 1)
                         {
-                            AddToTableCondo("Unit Placement", item.UnitPlacement.ToString());
+                            AddToTableCondo("Unit Placement", AddSpaceAfterComma(item.UnitPlacement.ToString()));
                         }
 
                         if (item.Restrictions.ToString().Length > 1)
@@ -760,7 +764,7 @@ namespace GIBS.Modules.FlexMLS
                     //[Subdivision]
                     if (item.Subdivision.Length > 1)
                     {
-                        AddToTableNeighborhood("Subdivision", item.Subdivision.ToString());
+                        AddToTableNeighborhood("Subdivision", AddSpaceAfterComma(item.Subdivision.ToString()));
                     }
 
 
@@ -776,7 +780,7 @@ namespace GIBS.Modules.FlexMLS
 
                     if (item.BeachDescription.Length > 1)
                     {
-                        AddToTableGeneral("Beach Description", item.BeachDescription.ToString());
+                        AddToTableGeneral("Beach Description", AddSpaceAfterComma(item.BeachDescription.ToString()));
                     }
                     if (item.BeachLakePond.Length > 1)
                     {
@@ -790,12 +794,12 @@ namespace GIBS.Modules.FlexMLS
                     // Neighborhood TABLE
                     if (item.ConvenientTo.Length > 1)
                     {
-                        AddToTableNeighborhood("Convenient To", item.ConvenientTo.ToString());
+                        AddToTableNeighborhood("Convenient To", AddSpaceAfterComma(item.ConvenientTo.ToString()));
                     }
                     //NeighborhoodAmenities
                     if (item.NeighborhoodAmenities.Length > 1)
                     {
-                        AddToTableNeighborhood("Neighborhood Amenities", item.NeighborhoodAmenities.ToString());
+                        AddToTableNeighborhood("Neighborhood Amenities", AddSpaceAfterComma(item.NeighborhoodAmenities.ToString()));
                     }
                     //SchoolDistrict
                     if (item.SchoolDistrict.Length > 1)
@@ -804,13 +808,6 @@ namespace GIBS.Modules.FlexMLS
                     }
 
 
-
-                    //double sqft = Convert.ToDouble(item.LotSquareFootage) / 43560;
-                    //string _sqft = "";
-                    //if (sqft > 0)
-                    //{
-                    //    _sqft = Math.Round(sqft, 2).ToString() + " Acres";
-                    //}
 
                     //lblBedsBaths
                     string _S_baths = "";
@@ -899,7 +896,7 @@ namespace GIBS.Modules.FlexMLS
 
                         if (item.InteriorFeatures.Length > 1)
                         {
-                            AddToTableInterior("Interior Features", item.InteriorFeatures.ToString());
+                            AddToTableInterior("Interior Features", AddSpaceAfterComma(item.InteriorFeatures.ToString()));
                         }
 
 
@@ -907,16 +904,16 @@ namespace GIBS.Modules.FlexMLS
 
                         if (item.KitchenFeatures.Length > 1)
                         {
-                            AddToTableInterior("Kitchen Features", item.KitchenFeatures.ToString());
+                            AddToTableInterior("Kitchen Features", AddSpaceAfterComma(item.KitchenFeatures.ToString()));
                         }
                         // INTERIOR FEATURES TABLE
                         if (item.Appliances.Length > 1)
                         {
-                            AddToTableInterior("Appliances", item.Appliances.ToString());
+                            AddToTableInterior("Appliances", AddSpaceAfterComma(item.Appliances.ToString()));
                         }
                         if (item.FamilyRoomFeatures.Length > 1)
                         {
-                            AddToTableInterior("Family Room", item.FamilyRoomFeatures.ToString());
+                            AddToTableInterior("Family Room", AddSpaceAfterComma(item.FamilyRoomFeatures.ToString()));
                         }
 
                         //if (item.MasterBedroom.Length > 5)
@@ -926,7 +923,7 @@ namespace GIBS.Modules.FlexMLS
                         //MasterBedroomFeatures
                         if (item.MasterBedroomFeatures.Length > 1)
                         {
-                            AddToTableInterior("Master Bedroom Features", item.MasterBedroomFeatures.ToString());
+                            AddToTableInterior("Master Bedroom Features", AddSpaceAfterComma(item.MasterBedroomFeatures.ToString()));
                         }
 
                         if (item.Bedroom2Features.Length > 1)
@@ -940,7 +937,7 @@ namespace GIBS.Modules.FlexMLS
                         }
                         if (item.FuelType.Length > 1)
                         {
-                            AddToTableInterior("Fuel Type", item.FuelType.ToString());
+                            AddToTableInterior("Fuel Type", AddSpaceAfterComma(item.FuelType.ToString()));
                         }
                         if (item.Cooling.Length > 1)
                         {
@@ -965,16 +962,16 @@ namespace GIBS.Modules.FlexMLS
                         // EXTERIOR FEATURES TABLE
                         if (item.ExteriorFeatures.Length > 1)
                         {
-                            AddToTableExterior("Exterior Features", item.ExteriorFeatures.ToString());
+                            AddToTableExterior("Exterior Features", AddSpaceAfterComma(item.ExteriorFeatures.ToString()));
                         }
                         if (item.Foundation.Length > 1)
                         {
-                            AddToTableExterior("Foundation", item.Foundation.ToString());
+                            AddToTableExterior("Foundation", AddSpaceAfterComma(item.Foundation.ToString()));
                         }
                         //Roofing
                         if (item.Roofing.Length > 1)
                         {
-                            AddToTableExterior("Roofing", item.Roofing.ToString());
+                            AddToTableExterior("Roofing", AddSpaceAfterComma(item.Roofing.ToString()));
                         }
 
 

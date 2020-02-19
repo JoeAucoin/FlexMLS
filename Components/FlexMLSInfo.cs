@@ -210,7 +210,7 @@ namespace GIBS.Modules.FlexMLS.Components
         private int _MLNumber = 0;
         private string _MLSApproved = "";
         private string _MLSID = "";
-        private double _MonthlyFeeAmount;
+        
         private string _MudRoomFeatures = "";
         private string _NeighborhoodAmenities = "";
         private string _NumberOfCars = "";
@@ -346,7 +346,8 @@ namespace GIBS.Modules.FlexMLS.Components
         private string _ZipCode = "";
         private string _Zoning = "";
 
-
+        private double _FeeAmount = 0;
+        private string _FeeFrequency = "";
         /// <summary>
         /// empty cstor
         /// </summary>
@@ -1556,11 +1557,7 @@ namespace GIBS.Modules.FlexMLS.Components
             set { _MLSID = value; }
         }
 
-        public double MonthlyFeeAmount
-        {
-            get { return _MonthlyFeeAmount; }
-            set { _MonthlyFeeAmount = value; }
-        }
+
 
         public string MudRoomFeatures
         {
@@ -2367,9 +2364,17 @@ namespace GIBS.Modules.FlexMLS.Components
             set { _Zoning = value; }
         }
 
+        public double FeeAmount
+        {
+            get { return _FeeAmount; }
+            set { _FeeAmount = value; }
+        }
 
-
-
+        public string FeeFrequency
+        {
+            get { return _FeeFrequency; }
+            set { _FeeFrequency = value; }
+        }
 
 
 

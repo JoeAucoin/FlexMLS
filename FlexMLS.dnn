@@ -1,5 +1,5 @@
 ﻿<dotnetnuke type="Package" version="5.0">
-  <packages><package name="GIBS.FlexMLS" type="Module" version="1.0.13">
+  <packages><package name="GIBS.FlexMLS" type="Module" version="1.0.14">
   <friendlyName>GIBS - FlexMLS</friendlyName>
   <description>GIBS - Flex MLS RETS</description>
   <iconFile>~/Images/icon_extensions_32px.png</iconFile>
@@ -32,7 +32,7 @@
         </script>
         <script type="UnInstall">
           <name>Uninstall.SqlDataProvider</name>
-          <version>1.0.13</version>
+          <version>1.0.14</version>
         </script>
       </scripts>
     </component>

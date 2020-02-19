@@ -120,7 +120,7 @@
 
 
     <asp:Panel ID="PanelCondoSpecific" runat="server" Visible="False">
-    <h3>Condominium Details</h3>
+    <h3>Details</h3>
         <table id="tblCondoSpecific" runat="server" class="table table-striped">
         </table>
      </asp:Panel>
