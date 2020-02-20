@@ -52,7 +52,7 @@ namespace GIBS.Modules.FlexMLS.Components
         private string _AgentID = "";
         private string _AgentRemarks = "";
         private string _Amenities = "";
-        private double _AnnualAssocFee;
+        private double _AnnualAssocFee = 0;
         private string _Appliances = "";
         private string _AsbestosYN = "";
         private string _AssocFeeYear = "";
@@ -348,6 +348,9 @@ namespace GIBS.Modules.FlexMLS.Components
 
         private double _FeeAmount = 0;
         private string _FeeFrequency = "";
+        private double _MonthlyFeeAmount = 0;
+
+
         /// <summary>
         /// empty cstor
         /// </summary>
@@ -2376,6 +2379,11 @@ namespace GIBS.Modules.FlexMLS.Components
             set { _FeeFrequency = value; }
         }
 
+        public double MonthlyFeeAmount
+        {
+            get { return _MonthlyFeeAmount; }
+            set { _MonthlyFeeAmount = value; }
+        }
 
 
         #endregion

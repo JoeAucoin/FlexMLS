@@ -674,7 +674,7 @@ namespace GIBS.Modules.FlexMLS
 
                     // GENERAL TABLE
 
-                    if (item.PropertySubType1.ToString() == "Condominium" || item.FeeAmount > 0)
+                    if (item.PropertySubType1.ToString() == "Condominium" || item.FeeAmount > 0 || item.MonthlyFeeAmount > 0 || item.AnnualAssocFee > 0)
                     {
                         PanelCondoSpecific.Visible = true;
                         
@@ -687,6 +687,17 @@ namespace GIBS.Modules.FlexMLS
                         {
                             AddToTableCondo("# of Units", item.MaxNumberOfUnits.ToString());
                         }
+
+                        if (item.MonthlyFeeAmount > 0)
+                        {
+                            AddToTableCondo("Monthly Fees", String.Format("{0:C0}", item.MonthlyFeeAmount));
+                        }
+
+                        if (item.AnnualAssocFee > 0)
+                        {
+                            AddToTableCondo("Annual Fees", String.Format("{0:C0}", item.AnnualAssocFee));
+                        }
+
                         if (item.FeeAmount > 0)
                         {
                             AddToTableCondo("Fees", String.Format("{0:C0}", item.FeeAmount) + " " + item.FeeFrequency.ToString());
