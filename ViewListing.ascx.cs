@@ -577,7 +577,7 @@ namespace GIBS.Modules.FlexMLS
                     lblListingPrice.Text = String.Format("{0:C0}", item.ListingPrice); //;
                     ListingAddressForGMap = (lblListingAddress.Text.ToString()).Replace(" ", "%20").ToString();
                     //41.674677,-69.990018
-                    
+
                     _GoogleLatLon = item.Latitude.ToString() + "," + item.Longitude.ToString();
 
                     //         GetZillowMortgageCalc(Double.Parse(item.ListingPrice.ToString()));
@@ -626,8 +626,8 @@ namespace GIBS.Modules.FlexMLS
                     if (_ZillowAutoRunData == true)
                     {
                         // ZILLOW DATA
-                   //     ZillowData.Visible = true;
-                   //     GetZillow_zpid(item.Address.ToString() + _UnitNumber.ToString(), item.Village.ToString(), "MA", item.ZipCode.ToString());
+                        //     ZillowData.Visible = true;
+                        //     GetZillow_zpid(item.Address.ToString() + _UnitNumber.ToString(), item.Village.ToString(), "MA", item.ZipCode.ToString());
 
                     }
                     else
@@ -660,7 +660,7 @@ namespace GIBS.Modules.FlexMLS
                     linkButtonFavoritesAddListing.CommandArgument = item.ListingNumber.ToString();
 
                     //HyperLinkInquiry - TELL A FRIEND FORM
-                    
+
                     if (Request.IsAuthenticated)
                     {
                         //string TellAFrinedLink = "";
@@ -674,7 +674,7 @@ namespace GIBS.Modules.FlexMLS
 
                     // GENERAL TABLE
 
-                    if (item.PropertySubType1.ToString() == "Condominium" || item.FeeAmount > 0 || item.MonthlyFeeAmount > 0 || item.AnnualAssocFee > 0)
+                    if ((item.PropertySubType1.ToString() == "Condominium") || (item.Complex.ToString().Length > 1) || (item.FeeAmount > 0) || (item.MonthlyFeeAmount > 0) || (item.AnnualAssocFee > 0))
                     {
                         PanelCondoSpecific.Visible = true;
                         
